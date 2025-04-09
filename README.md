@@ -67,16 +67,3 @@ As there's no live backend connected, the application simulates backend interact
 -   **Authentication**: Login/Signup logic checks against hardcoded or mock credentials/data.
 -   **Feed Data**: Post data is typically loaded from mock data sources or hardcoded lists within the repository or data provider layer (`lib/app/data/providers/` or mock repository implementations). This allows for UI development and testing without backend dependency.
 
-## Assumptions and Limitations
-
--   **Backend Simulation**: All backend interactions are simulated within the app code. No actual network calls are made to a real server.
--   **Limited Features**: The app focuses on core social media functionalities (Authentication, Feed display, Post creation, Liking). Features like comments, real-time updates via sockets, user profiles, search, notifications, etc., are not implemented.
--   **Scalability**: While MVVM and GetX offer good structure, optimizations for handling very large datasets or complex real-time features would be needed in a production scenario.
--   **Error Handling**: Basic error handling might be present, but comprehensive error management (e.g., specific network error handling, user feedback for all failure cases) might be limited due to the simulated backend.
-
-6.  Push to the branch (`git push origin feature/your-feature-name`).
-7.  Open a Pull Request.
-
-Please provide a clear description of your changes in the Pull Request.
-
-**(Optional: Add specific contribution guidelines, code style links, etc.)**
