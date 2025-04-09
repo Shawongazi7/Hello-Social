@@ -1,78 +1,82 @@
-# MeetMax - Social Media App
+# Hello Social - Social Media App
 
-MeetMax is a social media application built with Flutter, implementing the Model-View-ViewModel (MVVM) pattern with GetX for state management. The project simulates essential social media functionalities, enabling seamless user interaction. Authentication and feed display are fully implemented, with backend responses to ensure smooth functionality.
-
-## App Link
-[Download Meetmax](https://drive.google.com/file/d/1KZr5sPNAt4gdVywU36X2CsUlwxXdtOQW/view?usp=sharing)
+Hello Social is a social media application built with Flutter, implementing the Model-View-ViewModel (MVVM) pattern with GetX for state management. The project simulates essential social media functionalities, enabling seamless user interaction. Authentication and feed display are fully implemented, with backend responses to ensure smooth functionality.
 
 ## Project Details
 
-- **Project Name**: MeetMax
-- **Description**: A simple, user-friendly social media app with core features like authentication, posting, liking posts, and viewing feeds.
-- **Version**: 1.0.0+1
+-   **Project Name**: Hello Social
+-   **Description**: A simple, user-friendly social media app with core features like authentication, posting, liking posts, and viewing feeds.
+-   **Version**: 1.0.0+1
 
 ## Table of Contents
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Folder Structure](#folder-structure)
-- [Architecture](#architecture)
-- [Simulated Backend](#simulated-backend)
-- [Assumptions and Limitations](#assumptions-and-limitations)
-- [Contributing](#contributing)
+
+-   [Features](#features)
+-   [Requirements](#requirements)
+-   [Installation](#installation)
+-   [Folder Structure](#folder-structure)
+-   [Architecture](#architecture)
+-   [Simulated Backend](#simulated-backend)
+-   [Assumptions and Limitations](#assumptions-and-limitations)
+-   [Contributing](#contributing)
 
 ---
 
 ## Features
 
 ### Implemented
-- **User Authentication**: Comprehensive form validation for login and signup screens, forgot password, ensuring secure and accurate input.
-- **Feed Screen**: Displays a feed of posts for authenticated users, in line with Figma design specifications.
-- **Post Interactions**: Like and create new posts (comment and react features not implemented).
-- **State Management**: Real-time updates within the application using GetX.
-- **Dependency Injection**: Efficient object creation and management through dependency injection with GetX.
-- **Responsive Design**: Adaptive layout for different screen sizes using `flutter_screenutil`.
-- **Persistent Navigation**: Bottom navigation bar using `persistent_bottom_nav_bar`.
+
+-   **User Authentication**: Comprehensive form validation for login and signup screens, forgot password, ensuring secure and accurate input.
+-   **Feed Screen**: Displays a feed of posts for authenticated users, in line with Figma design specifications.
+-   **Post Interactions**: Like and create new posts (comment and react features not implemented).
+-   **State Management**: Real-time updates within the application using GetX.
+-   **Dependency Injection**: Efficient object creation and management through dependency injection with GetX.
+-   **Responsive Design**: Adaptive layout for different screen sizes using `flutter_screenutil`.
+-   **Persistent Navigation**: Bottom navigation bar using `persistent_bottom_nav_bar`.
 
 ### Optional (Not Implemented)
-- **Comments** and **Reactions**: Currently excluded.
+
+-   **Comments** and **Reactions**: Currently excluded.
 
 ## Requirements
 
-To run MeetMax locally, ensure you have:
-- **Flutter SDK**: Version 3.5.3 or later
-- A compatible IDE such as **Visual Studio Code** or **Android Studio**
-- An emulator or physical device with Android or iOS support
+To run Hello Social locally, ensure you have:
 
-## Installation
+-   **Flutter SDK**: Version 3.5.3 or later
+-   A compatible IDE such as **Visual Studio Code** or **Android Studio**
+-   An emulator or physical device with Android or iOS support
 
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/Noctambulist007/meetmax.git
-    cd meetmax
-    ```
+## Architecture
 
-2. **Install dependencies**:
-    ```bash
-    flutter pub get
-    ```
+Hello Social uses the **Model-View-ViewModel (MVVM)** pattern:
 
-3. **Run the app**:
-    ```bash
-    flutter run
-    ```
-   
-Architecture
-MeetMax uses the MVVM pattern:
+-   **Model**: Represents data models (e.g., `User`, `Post`) and potentially data access logic (Repositories). Located typically within `lib/app/data/models/` and `lib/app/data/repositories/`.
+-   **View**: Flutter widgets that render the UI. They observe the ViewModel for state changes and forward user interactions to the ViewModel. Located typically within `lib/app/modules/*/views/`.
+-   **ViewModel**: Contains the presentation logic and state. It fetches data from the Model (Repositories), processes it, and exposes it to the View. GetX controllers (`GetxController`) serve as ViewModels. Located typically within `lib/app/modules/*/controllers/`.
 
-Model: Represents data models, encapsulating post, user, and authentication data.
-View: Flutter widgets render the UI, fetching data from the ViewModel via controllers.
-ViewModel: Contains business logic and manages communication between models and views. GetX controllers are used to update UI elements in real time.
-State Management
-GetX: GetX controllers handle state management efficiently, providing dependency injection and simplified navigation.
-Simulated Backend
-With live backend, simulate user authentication and feed data:
+### State Management
 
+-   **GetX**: Used for state management, dependency injection, and routing.
+    -   **State Management**: `GetxController` along with `Obx` or `GetBuilder` widgets are used to reactively update the UI.
+    -   **Dependency Injection**: GetX Bindings (`lib/app/modules/*/bindings/`) are used to inject dependencies (like Controllers and Repositories) lazily when a route is accessed.
+    -   **Routing**: GetX simplifies navigation between screens (`Get.toNamed()`, `Get.offAllNamed()`, etc.). Routes are defined in `lib/app/routes/`.
 
-Contributing
-We welcome contributions! If you'd like to make updates, please fork the repository and submit a pull request with your proposed changes.
+### Simulated Backend
+
+As there's no live backend connected, the application simulates backend interactions:
+
+-   **Authentication**: Login/Signup logic checks against hardcoded or mock credentials/data.
+-   **Feed Data**: Post data is typically loaded from mock data sources or hardcoded lists within the repository or data provider layer (`lib/app/data/providers/` or mock repository implementations). This allows for UI development and testing without backend dependency.
+
+## Assumptions and Limitations
+
+-   **Backend Simulation**: All backend interactions are simulated within the app code. No actual network calls are made to a real server.
+-   **Limited Features**: The app focuses on core social media functionalities (Authentication, Feed display, Post creation, Liking). Features like comments, real-time updates via sockets, user profiles, search, notifications, etc., are not implemented.
+-   **Scalability**: While MVVM and GetX offer good structure, optimizations for handling very large datasets or complex real-time features would be needed in a production scenario.
+-   **Error Handling**: Basic error handling might be present, but comprehensive error management (e.g., specific network error handling, user feedback for all failure cases) might be limited due to the simulated backend.
+
+6.  Push to the branch (`git push origin feature/your-feature-name`).
+7.  Open a Pull Request.
+
+Please provide a clear description of your changes in the Pull Request.
+
+**(Optional: Add specific contribution guidelines, code style links, etc.)**
