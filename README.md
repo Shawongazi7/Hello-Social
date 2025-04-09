@@ -13,12 +13,8 @@ Hello Social is a social media application built with Flutter, implementing the 
 -   [Features](#features)
 -   [Requirements](#requirements)
 -   [Installation](#installation)
--   [Folder Structure](#folder-structure)
 -   [Architecture](#architecture)
 -   [Simulated Backend](#simulated-backend)
--   [Assumptions and Limitations](#assumptions-and-limitations)
--   [Contributing](#contributing)
-
 ---
 
 ## Features
